@@ -1,0 +1,17 @@
+int waterLevel = 0; // sets place value for waterLevel
+int anologPin = A5; // AnalogPin
+
+void setup() {
+  // put your setup code here, to run once:
+Serial.begin (9600);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+ waterLevel = analogRead(anologPin); //Reads value from analog and assigns value to variable 
+
+ 
+   Serial.println(waterLevel); // varible is printed in serial 
+   delay(1000);
+
+}
