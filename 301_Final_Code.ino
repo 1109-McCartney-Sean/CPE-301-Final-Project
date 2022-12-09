@@ -58,3 +58,35 @@ unsigned int adc_read(unsigned char adc_channel_num)
   // return the result in the ADC data register
   return *my_ADC_DATA;
 }
+//•All States
+//– The realtime clock must be used to report (via the Serial port) the time of each state transition,
+//and any changes to the stepper motor position for the vent.
+
+//•All states except DISABLED
+//– Humidity and temperature should be continuously monitored and reported on the LDC screen.
+//Updates should occur once per minute.
+//– System should respond to changes in vent position control
+//– Stop button should turn fan motor off (if on) and system should go to DISABLED state
+
+//•DISABLED
+//– YELLOW LED should be ON
+//– No monitoring of temperature or water should be performed
+
+//– Start button should be monitored using an ISR
+
+//•IDLE
+//– Exact time stamp (using real time clock) should record transition times
+//– Water level should be continuously monitored and state changed to error if level is too low
+//– GREEN LED should be ON
+
+//•ERROR
+//– Motor should be off and not start regardless of temperature
+//– A reset button should trigger a change to the IDLE stage if the water level is above the threshold
+//– Error message should be displayed on LCD
+//– RED LED should be turned on (all other LEDs turned off)
+
+//•RUNNING
+//– Fan motor should be on
+//– System should transition to IDLE as soon as temperature drops below threshold
+//– System should transition to ERROR state if water becomes too low
+//– BLUE LED should be turned on (all other LEDs turned off)
