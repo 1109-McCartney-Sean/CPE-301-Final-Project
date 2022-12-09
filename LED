@@ -1,31 +1,32 @@
+int green = 38;
 int red = 39;
 int blue = 40;
 int yellow = 41;
-int green = 38;
+
 void setup() {
   // put your setup code here, to run once:
-  pinMode (red, OUTPUT);
-  pinMode (blue, OUTPUT);
   pinMode (green, OUTPUT);
+  pinMode (red, OUTPUT);
+  pinMode (blue, OUTPUT);  
   pinMode (yellow, OUTPUT);
   Serial.begin(9600);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-digitalWrite(blue, HIGH);
-delay (1000);
-digitalWrite(red, HIGH);
+digitalWrite(green, HIGH);
 delay(1000);
-digitalWrite(blue, LOW);
+digitalWrite(green, LOW);
+delay(1000);
+digitalWrite(red, HIGH);
 delay(1000);
 digitalWrite(red, LOW);
 delay(1000);
-digitalWrite(green, HIGH);
+digitalWrite(blue, HIGH);
+delay (1000);
+digitalWrite(blue, LOW);
 delay(1000);
 digitalWrite(yellow, HIGH);
-delay(1000);
-digitalWrite(green, LOW);
 delay(1000);
 digitalWrite(yellow, LOW);
 }
