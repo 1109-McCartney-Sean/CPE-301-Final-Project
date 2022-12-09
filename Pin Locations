@@ -1,0 +1,11 @@
+Water Sensor
+  A5(analog), GND, PWR
+LCD
+  VSS - GND; VDD - PWR; VO - Pot(potentiometer); RS - D8(digital); RW - GND; E - D7; ---- d4 - D5; d5 - D4;
+  d6 - D3; d7 - D2; A - PWR; K - GND
+LEDS
+  Red - D39; Ylw - D41; Blu - D40; Grn - D38;
+Step Motor
+  1N1 - D12; 1N2 - D11; 1N3 - D10; 1N4 - D9;
+DHT
+  D6
