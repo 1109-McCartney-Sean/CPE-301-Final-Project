@@ -101,7 +101,18 @@ void checkRunning()
 {
   
 }
-
+void LCDandDHT()
+{
+  
+}
+void fan()
+  {
+    
+  }
+void stepper()
+{
+  
+}
 
 }
 //•All States
