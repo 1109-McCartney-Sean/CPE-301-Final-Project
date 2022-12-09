@@ -1,3 +1,5 @@
+// Madison Guerrero, Nathan Habon, Sean McCartney
+
 #include <DHT.h>
 #include <LiquidCrystal.h>
 int speedPin = 27;
