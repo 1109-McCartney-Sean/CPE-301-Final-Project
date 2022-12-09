@@ -42,3 +42,18 @@ delay(1000);
 //digitalWrite(yellow, LOW);
 *port_c &= ~(0b00000100);
 }
+
+
+
+/*
+    // DECODER BLOCK
+  if(Button1val == LOW {      // Button is off
+    // write to the LED, Yellow
+    digitalWrite(Yellow, HIGH);
+  }else if(Button1val == HIGH){ // Button is off
+    // write to the LED, Green
+    digitalWrite(Green, HIGH);
+     digitalWrite(Yellow, LOW);
+ 
+  } // end DECODER BLOCK
+*/
