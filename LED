@@ -1,14 +1,15 @@
-int green = 38;
-int red = 39;
-int blue = 40;
-int yellow = 41;
+int green = 34;
+int red = 35;
+int blue = 36;
+int yellow = 37;
+int button = 43;
 
 void setup() {
   // put your setup code here, to run once:
-  //pinMode (green, OUTPUT);
-  //pinMode (red, OUTPUT);
-  //pinMode (blue, OUTPUT);  
-  //pinMode (yellow, OUTPUT);
+  //pinMode (green, OUTPUT);  Idle
+  //pinMode (red, OUTPUT); Error
+  //pinMode (blue, OUTPUT); Running
+  //pinMode (yellow, OUTPUT); Disabled
   Serial.begin(9600);
 }
 
