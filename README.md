@@ -2,4 +2,4 @@
 
 Group name: Our Mom
 
-Madison Guerrero, Nathan Habon, Sean McCartney
+Madison Guerrero, Nathan Habon, Sean McCartney, Eric Lee, Robert Smith
