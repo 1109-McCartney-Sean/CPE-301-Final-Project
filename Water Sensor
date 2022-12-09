@@ -1,3 +1,5 @@
+// Madison Guerrero, Nathan Habon, Sean McCartney
+
 int waterLevel = 0; // sets place value for waterLevel
 int anologPin = A5; // AnalogPin
 
