@@ -1,3 +1,5 @@
+// Madison Guerrero, Nathan Habon, Sean McCartney
+
 int speedPin = 5;
 int dir1 = 4;
 int dir2 = 3;
