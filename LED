@@ -2,9 +2,9 @@ int green = 38;
 int red = 39;
 int blue = 40;
 int yellow = 41;
-volatile unsigned char* port_c= (unnsigned char*) 0x28;
-volatile unsigned char* ddr_c= (unnsigned char*) 0x27;
-volatile unsigned char* pin_c= (unnsigned char*) 0x26;
+volatile unsigned char* port_c= (unsigned char*) 0x28;
+volatile unsigned char* ddr_c= (unsigned char*) 0x27;
+volatile unsigned char* pin_c= (unsigned char*) 0x26;
 void setup() {
   // put your setup code here, to run once:
   //pinMode (green, OUTPUT);
