@@ -41,7 +41,7 @@ void loop() {
   float humid = dht.readHumidity(); // reads humid
   float fah = dht.readTemperature(true); // reads temp in F the true statment makes it such
 
-  if ( fah >= 70.0 ){
+  if ( fah >= 65.0 ){
   
   //digitalWrite(dir1, HIGH); // gets the fan to turn on
   *port_a |= 0b10000000;
@@ -55,7 +55,7 @@ void loop() {
   
   //analogWrite(speedPin, motorSpeed);
   analogWrite(*port_a,motorSpeed);
-  delay(2000);
+  delay(1000);
   lcd.setCursor(0,0); // set location of chars
   lcd.print("Temp: ");
   lcd.print(fah);
