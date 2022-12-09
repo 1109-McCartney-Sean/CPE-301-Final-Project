@@ -5,10 +5,10 @@ int yellow = 41;
 
 void setup() {
   // put your setup code here, to run once:
-  pinMode (green, OUTPUT);
-  pinMode (red, OUTPUT);
-  pinMode (blue, OUTPUT);  
-  pinMode (yellow, OUTPUT);
+  //pinMode (green, OUTPUT);
+  //pinMode (red, OUTPUT);
+  //pinMode (blue, OUTPUT);  
+  //pinMode (yellow, OUTPUT);
   Serial.begin(9600);
 }
 
