@@ -8,11 +8,17 @@ dht11 sensor
 #include <Wire.h>
 #include <DS3231.h>
 #include <dht_nonblocking.h>
+#include <DHT.h>
+
+LiquidCrystal lcd(8, 7, 5, 4, 3, 2);
+DHT dht(DHTPIN, DHTYPE); // sets and chooses the device 
 
 
 void setup() {
   // put your setup code here, to run once:
-
+Serial.begin(9600);
+  lcd.begin(16, 2); // sets the location on the lcd
+  dht.begin();
 }
 
 void loop() {
@@ -103,7 +109,18 @@ void checkRunning()
 }
 void LCDandDHT()
 {
-  
+  float humid = dht.readHumidity(); // reads humid
+  float fah = dht.readTemperature(true); // reads temp in F the true statment makes it such
+
+  lcd.setCursor(0,0); // set location of chars
+  lcd.print("Temp: ");
+  lcd.print(fah);
+  lcd.print("F");
+  lcd.setCursor(0,1); // sets next col
+  lcd.print("Humidity: ");
+  lcd.print(humid);
+  lcd.print("%");
+  delay(1000);
 }
 void fan()
   {
