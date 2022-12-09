@@ -13,7 +13,7 @@ void setup() {
   //pinMode (yellow, OUTPUT);
   Serial.begin(9600);
   *ddr_c &= 0b11110000;
-  *port_k |= 0b00001111;
+  *port_c |= 0b00001111;
 }
 
 void loop() {
