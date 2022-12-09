@@ -1,3 +1,5 @@
+// Madison Guerrero, Nathan Habon, Sean McCartney
+
 #include <Stepper.h> 
 
 #define STEPS 32 // steps on the motor 
