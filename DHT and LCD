@@ -1,4 +1,5 @@
-// Madison Guerrero, Nathan Habon, Sean McCartney  
+// Madison Guerrero, Nathan Habon, Sean McCartney
+
 #include <DHT.h>
 #include <LiquidCrystal.h>
 
@@ -23,7 +24,7 @@ void loop(){
   lcd.setCursor(0,0); // set location of chars
   lcd.print("Temp: ");
   lcd.print(fah);
-  lcd.print(" F");
+  lcd.print("F");
   lcd.setCursor(0,1); // sets next col
   lcd.print("Humidity: ");
   lcd.print(humid);
