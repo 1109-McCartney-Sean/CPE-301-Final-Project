@@ -1,8 +1,8 @@
 // Madison Guerrero, Nathan Habon, Sean McCartney
 
-int speedPin = 5;
-int dir1 = 4;
-int dir2 = 3;
+int speedPin = 25;
+int dir1 = 27;
+int dir2 = 29;
 int motorSpeed = 225; // sets speed of the motor 250 is max around 100 it sorta works 
 void setup() {
   // put your setup code here, to run once:
