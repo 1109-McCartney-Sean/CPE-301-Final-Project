@@ -1,22 +1,16 @@
-// Madison Guerrero, Nathan Habon, Sean McCartney
-
 #include <DHT.h>
 #include <LiquidCrystal.h>
 
 LiquidCrystal lcd(8, 7, 5, 4, 3, 2);
-
-int DHTPIN = 6;
-DHT dht(DHTPIN, DHT11);
+DHT dht(6, DHT11);
 
 void setup(){
   Serial.begin(9600);
   lcd.begin(16, 2); // sets the location on the lcd
   dht.begin();
 }
-
-void loop(){
- 
-   delay(2000);
+void dht_function(){
+  delay(2000);
   float humid = dht.readHumidity(); // reads humid
   float fah = dht.readTemperature(true); // reads temp in F the true statment makes it such
 
@@ -29,4 +23,7 @@ void loop(){
   lcd.print(humid);
   lcd.print("%");
   delay(1000);
+}
+void loop(){
+ dht_function();
 }
