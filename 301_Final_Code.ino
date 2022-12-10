@@ -10,6 +10,8 @@ dht11 sensor
 #include <dht_nonblocking.h>
 #include <DHT.h>
 
+
+
 LiquidCrystal lcd(8, 7, 5, 4, 3, 2);
 DHT dht(DHTPIN, DHTYPE); // sets and chooses the device 
 
