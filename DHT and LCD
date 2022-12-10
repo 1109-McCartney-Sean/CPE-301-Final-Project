@@ -5,10 +5,8 @@
 
 LiquidCrystal lcd(8, 7, 5, 4, 3, 2);
 
-//#define DHTPIN 6 // need to change i think 
-#define DHTYPE DHT11 // need to change
 int DHTPIN = 6;
-DHT dht(DHTPIN, DHTYPE); // sets and chooses the device 
+DHT dht(DHTPIN, DHT11);
 
 void setup(){
   Serial.begin(9600);
