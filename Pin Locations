@@ -9,3 +9,8 @@ Step Motor
   1N1 - D12; 1N2 - D11; 1N3 - D10; 1N4 - D9;
 DHT
   D5
+RTC
+SDA-SDA, SCL-SCL 
+
+IC-FAN
+Green - D25, Yellow - D27, Oragne -D29 
