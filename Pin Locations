@@ -1,14 +1,14 @@
 Water Sensor
   A5(analog), GND, PWR
 LCD
-  VSS - GND; VDD - PWR; VO - Pot(potentiometer); RS - D7(digital); RW - GND; E - D6; ---- d4 - D4; d5 - D3;
-  d6 - D2; d7 - D1; A - PWR; K - GND
+  VSS - GND; VDD - PWR; VO - Pot(potentiometer); RS - D8(digital); RW - GND; E - D7; ---- d4 - D5; d5 - D4;
+  d6 - D3; d7 - D2; A - PWR; K - GND
 LEDS
   Red - D34; Ylw - D35; Blu - D36; Grn - D37;
 Step Motor
   1N1 - D12; 1N2 - D11; 1N3 - D10; 1N4 - D9;
 DHT
-  D5
+  D6
 RTC
 SDA-SDA, SCL-SCL 
 
