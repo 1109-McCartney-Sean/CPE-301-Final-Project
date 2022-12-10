@@ -131,6 +131,36 @@ void fan()
 void stepper()
 {
   
+int STEPS = 32; // steps on the motor 
+
+Stepper stepper(STEPS, 9, 11, 10, 12);
+
+int Pval = 0; // sets value to 0 so that change in pot makes stepper move
+
+int potVal = 0; // value pulled from the analog / pot
+
+void setup() {
+
+  Serial.begin(9600);
+
+  stepper.setSpeed(200); 
+
+}
+
+void loop() {
+
+potVal = map(analogRead(A0),0,1024,0,500);// 1024 stands for the anolog and the 500 is the stepper (this section needs a redo )
+
+if (potVal>Pval)
+  stepper.step(20);
+
+if (potVal<Pval)
+
+  stepper.step(-20);
+
+Pval = potVal; // creates new value so that when pot is move there will be a shift
+
+}
 }
 
 }
