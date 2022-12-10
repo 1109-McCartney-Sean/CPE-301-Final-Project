@@ -2,7 +2,7 @@
 
 #include <Stepper.h> 
 
-#define STEPS 32 // steps on the motor 
+int STEPS = 32; // steps on the motor 
 
 Stepper stepper(STEPS, 9, 11, 10, 12);
 
