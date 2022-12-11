@@ -10,6 +10,18 @@ dht11 sensor
 #include <dht_nonblocking.h>
 #include <DHT.h>
 
+volatile bool run;
+volatile bool stateError;
+
+
+volatile unsigned char* port_c= (unsigned char*) 0x28;
+volatile unsigned char* ddr_c= (unsigned char*) 0x27;
+volatile unsigned char* pin_c= (unsigned char*) 0x26;
+
+
+volatile unsigned char* port_a=(unsigned char*) 0x22;
+volatile unsigned char* ddr_a=(unsigned char*) 0x21;
+volatile unsigned char* pin_a=(unsigned char*) 0x20;
 
 
 LiquidCrystal lcd(8, 7, 5, 4, 3, 2);
@@ -21,11 +33,16 @@ void setup() {
 Serial.begin(9600);
   lcd.begin(16, 2); // sets the location on the lcd
   dht.begin();
+    *ddr_c &= 0b11110000;
+    *port_c |= 0b00001111;
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-
+  readTemperature();
+  readHumidity();
+  waterLevel();
+  checkRunning();
 }
 void adc_init()
 {
@@ -68,37 +85,47 @@ unsigned int adc_read(unsigned char adc_channel_num)
   
  void disabled()
  {
-   
+  //– YELLOW LED should be ON
+  *port_c |= 0b00000100;
+  *port_c &= ~(0b001011);
   //•DISABLED
-//– YELLOW LED should be ON
+
 //– No monitoring of temperature or water should be performed
    //– Start button should be monitored using an ISR
 }
  void idle()
  {
+  //– GREEN LED should be ON
+  *port_c |= 0b00000001;
+  *port_c &= ~(0b00001110);
    //•IDLE
 //– Exact time stamp (using real time clock) should record transition times
 //– Water level should be continuously monitored and state changed to error if level is too low
-//– GREEN LED should be ON
+
  }
   
  void error()
  {
-   
+  //– RED LED should be turned on (all other LEDs turned off)
+  *port_c |= 0b00001000;
+  *port_c &= ~(0b00000111);
    //•ERROR
 //– Motor should be off and not start regardless of temperature
 //– A reset button should trigger a change to the IDLE stage if the water level is above the threshold
 //– Error message should be displayed on LCD
-//– RED LED should be turned on (all other LEDs turned off)
+
  }
   
   void running()
   {
+    //– BLUE LED should be turned on (all other LEDs turned off)
+    *port_c |= 0b00000010;
+    *port_c &= ~(0b00001101);
     //•RUNNING
 //– Fan motor should be on
 //– System should transition to IDLE as soon as temperature drops below threshold
 //– System should transition to ERROR state if water becomes too low
-//– BLUE LED should be turned on (all other LEDs turned off)
+
   }
   
 void waterLevel()
@@ -108,7 +135,7 @@ void waterLevel()
 
 void checkRunning()
 {
-  
+  if ()
 }
 void LCDandDHT()
 {
