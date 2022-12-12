@@ -133,12 +133,13 @@ void waterLevel()
 {
  
   unsigned int waterLevel = adc_Read(1);
-  // includ the temp sensor for the first two if statements
-  if(waterLevel > 100)
+  float fah = dht.readTemperature(true);
+
+  if(waterLevel > 100 && fah <= 60)
   {
     idle();
   }
-  else if( waterLevel > 100)
+  else if( waterLevel > 100 && fah <= 60)
   {
     running();
   }
