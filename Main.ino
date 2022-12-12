@@ -6,29 +6,38 @@
 //********
 LiquidCrystal lcd(8, 7, 5, 4, 3, 2);
 DHT dht(6, DHT11);
+
 //********
 Stepper stepper(32, 9, 11, 10, 12);
 int Pval = 0; // sets value to 0 so that change in pot makes stepper move
 int potVal = 0; // value pulled from the analog / pot
+
 //********
 int waterLevel = 0; // sets place value for waterLevel
 int anologPin = A5; // AnalogPin
+
 //********
 int motorSpeed = 225; // sets speed of the motor 250 is max around 100 it sorta works 
+
 //********
 int green = 38;
 int red = 39;
 int blue = 40;
 int yellow = 41;
+
+// Pointers
 volatile unsigned char* port_c= (unsigned char*) 0x28;
 volatile unsigned char* ddr_c= (unsigned char*) 0x27;
 volatile unsigned char* pin_c= (unsigned char*) 0x26;
+
 //********
 RTC_DS1307 realTimeClock;
+
 //********
 String currentState;
 bool start;
-//********
+
+
 void setup(){
   Serial.begin(9600);
   //DHT
