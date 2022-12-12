@@ -180,6 +180,11 @@ void error(){
     idle();
     currentState = "Idle State";
   }
+  else
+  {
+    error();
+  }
+  
   //if (reset butten pushed){ currentState = "idle;";}
 }
 void selectState()
