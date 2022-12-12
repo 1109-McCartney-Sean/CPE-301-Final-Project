@@ -24,6 +24,7 @@ int green = 38;
 int red = 39;
 int blue = 40;
 int yellow = 41;
+bool button = 43;
 
 // Pointers
 volatile unsigned char* port_c= (unsigned char*) 0x28;
@@ -173,6 +174,11 @@ void error(){
   turnRed();
   if(!start){
     currentState = "disable";
+  }
+  if( button = true)
+  {
+    idle();
+    currentState = "Idle State";
   }
   //if (reset butten pushed){ currentState = "idle;";}
 }
