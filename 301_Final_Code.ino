@@ -86,6 +86,10 @@ unsigned int adc_read(unsigned char adc_channel_num)
   
  void disabled()
  {
+  Serial.println(“\nSystem Disabled”);
+  // turn on Yellow LED
+  lcd.clear();
+  // turn off fan
   //– YELLOW LED should be ON
   *port_c |= 0b00000100;
   *port_c &= ~(0b001011);
@@ -96,6 +100,10 @@ unsigned int adc_read(unsigned char adc_channel_num)
 }
  void idle()
  {
+  unsigned int waterLevel = adcRead(1);
+  // Green LED on
+  //display temperature and humidity
+  LCDandDHT(); 
   //– GREEN LED should be ON
   *port_c |= 0b00000001;
   *port_c &= ~(0b00001110);
