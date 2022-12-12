@@ -23,6 +23,8 @@ volatile unsigned char* port_a=(unsigned char*) 0x22;
 volatile unsigned char* ddr_a=(unsigned char*) 0x21;
 volatile unsigned char* pin_a=(unsigned char*) 0x20;
 
+void displayWaterLevel( unsigned int waterLevel);
+unsigned int waterLevel = 0;
 
 LiquidCrystal lcd(8, 7, 5, 4, 3, 2);
 DHT dht(DHTPIN, DHTYPE); // sets and chooses the device 
@@ -130,6 +132,23 @@ unsigned int adc_read(unsigned char adc_channel_num)
   
 void waterLevel()
 {
+ 
+  unsigned int waterLevel = adc_Read(1);
+  // includ the temp sensor for the first two if statements
+  if(waterLevel > 100)
+  {
+    idle();
+  }
+  else if( waterLevel > 100)
+  {
+    running();
+  }
+  else if (waterLevel <= 100)
+  {
+    error();
+  }
+  else {
+  }
   
 }
 
