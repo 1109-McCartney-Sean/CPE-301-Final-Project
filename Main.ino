@@ -32,19 +32,20 @@ bool start;
 void setup(){
   Serial.begin(9600);
   //DHT
-  //lcd.begin(16, 2); // sets the location on the lcd
-  //dht.begin();
+  lcd.begin(16, 2); // sets the location on the lcd
+  dht.begin();
   //STEPPER
   //stepper.setSpeed(200); 
   //fan
-  //pinMode (25, OUTPUT);
-  //pinMode (27, OUTPUT);
-  //pinMode (29, OUTPUT);
-  //*ddr_c &= 0b11110000;
-  //*port_c |= 0b00001111;
-  realTimeClock.begin();
-  realTimeClock.adjust(DateTime(F(__DATE__),F(__TIME__)));
+  pinMode (25, OUTPUT);
+  pinMode (27, OUTPUT);
+  pinMode (29, OUTPUT);
+  *ddr_c &= 0b11110000;
+  *port_c |= 0b00001111;
+  //realTimeClock.begin();
+  //realTimeClock.adjust(DateTime(F(__DATE__),F(__TIME__)));
   start = false;
+  currentState = "disable";
 }
 float getHumidity(){
   return dht.readHumidity();
@@ -64,7 +65,6 @@ void lcd_display(float fah, float humid){
   lcd.print(humid);
   lcd.print("%");
   delay(1000);
-  currentState = "idle";
 }
 
 void dht_function(){
@@ -90,77 +90,107 @@ void realTimeClockFunction(){
   Serial.print(realTimeClock.now().toString("hh:mm:ss ap"));
   Serial.write("\n");
 }
-void fan(){
-  turnOffLights();
+void running(){
   turnBlue();
+  delay(1000);
   float humid = getHumidity(); // reads humid
   float fah = getTemperature(); // reads temp in F the true statment makes it such
-  if ( fah >= 70.0 ){
-  digitalWrite(27, HIGH); // gets the fan to turn on 
-  }
-  else 
-  {
-     digitalWrite(27, LOW); // gets the fan to turn off 
-  }
   analogWrite(25, 225);
-  lcd_display(fah, humid);
+  lcd_display(getTemperature(), getHumidity());
+  digitalWrite(27, HIGH); // gets the fan to turn on 
+  if(fah < 60 )
+  {
+     digitalWrite(27, LOW); // gets the fan to turn off
+     currentState = "idle";
+  }
+  if(!start){
+    currentState = "disable";
+  }
+  if(getWaterLevel() < 150){
+    int s = 1;//currentState = "error";
+  }
 
 }
-void turnOffLights(){
-  //digitalWrite(green, LOW);
-  *port_c &= ~(0b00000001);
-  //digitalWrite(red, LOW);
-  *port_c &= ~(0b00001000);
-  //digitalWrite(blue, LOW);
-  *port_c &= ~(0b00000010);
-  //digitalWrite(yellow, LOW);  
-  *port_c &= ~(0b00000100); 
-}
+
 void turnGreen(){
   //digitalWrite(green, HIGH);
+  *port_c &= 0b11110000;
   *port_c |= 0b00000001;
 }
 void turnRed(){
   //digitalWrite(red, HIGH);
+  *port_c &= 0b11110000;
   *port_c |= 0b00001000;
 }
 void turnBlue(){
   //digitalWrite(blue, HIGH);
+  *port_c &= 0b11110000;
   *port_c |= 0b00000010;
 }
 void turnYellow(){
   //digitalWrite(yellow, HIGH);
+  *port_c &= 0b11110000;
   *port_c |= 0b00000100;
 }
 void disable(){
-  turnOffLights();
   turnYellow();
-  currentState = "disable";
-  
+  delay(1000);
+  if(!start){
+    start = true;
+  }
+  if(start)
+  {
+    currentState = "idle";
+  }
 }
 void idle(){
-  if(currentState == "idle"){
-    if(getTemperature > 70){
-      fan();
-    }
-    else if (*port_c == 0b00000010){
-      turnOffLights();
-      turnGreen();
-    }
+  turnGreen();
+  delay(1000);
+  lcd_display(getTemperature(), getHumidity());
+  if(getTemperature() > 60){
+    currentState = "running";
   }
+  
   if (getWaterLevel() <= 150){
-    error();
+    int s = 1;//currentState = "error";
   }
 
 }
+void changeState()
+{
+  Serial.print("The Current State is: " + currentState);
+}
 void error(){
-  turnOffLights();
   turnRed();
+  if(!start){
+    currentState = "disable";
+  }
+  //if (reset butten pushed){ currentState = "idle;";}
+}
+void selectState()
+{
+  if(currentState == "disable")
+  {
+    disable();      
+  }
+  if(currentState == "running")
+  {
+    running();
+  }
+  if(currentState == "error")
+  {
+    error();
+  }
+  if(currentState == "idle")
+  {
+    idle();
+  }
 }
 void loop(){
   //idle();
  //dht_function();
- //stepper_function();
+ stepper_function();
  //water_sensor();
  //fan();
+ selectState();
 }
