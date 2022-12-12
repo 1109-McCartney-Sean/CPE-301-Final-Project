@@ -23,7 +23,6 @@ volatile unsigned char* port_a=(unsigned char*) 0x22;
 volatile unsigned char* ddr_a=(unsigned char*) 0x21;
 volatile unsigned char* pin_a=(unsigned char*) 0x20;
 
-void displayWaterLevel( unsigned int waterLevel);
 unsigned int waterLevel = 0;
 
 LiquidCrystal lcd(8, 7, 5, 4, 3, 2);
