@@ -1,4 +1,4 @@
-// Madison Guerrero, Nathan Habon, Sean McCartney
+// Madison Guerrero, Nathan Habon, Sean McCartney, Eric Lee, Robert Smith
 
 int waterLevel = 0; // sets place value for waterLevel
 int anologPin = A5; // AnalogPin
