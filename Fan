@@ -1,4 +1,4 @@
-// Madison Guerrero, Nathan Habon, Sean McCartney
+// Madison Guerrero, Nathan Habon, Sean McCartney, Eric Lee, Robert Smith
 
 int speedPin = 25;
 int dir1 = 27;
