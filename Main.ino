@@ -6,38 +6,30 @@
 //********
 LiquidCrystal lcd(8, 7, 5, 4, 3, 2);
 DHT dht(6, DHT11);
-
 //********
 Stepper stepper(32, 9, 11, 10, 12);
 int Pval = 0; // sets value to 0 so that change in pot makes stepper move
 int potVal = 0; // value pulled from the analog / pot
-
 //********
 int waterLevel = 0; // sets place value for waterLevel
 int anologPin = A5; // AnalogPin
-
 //********
 int motorSpeed = 225; // sets speed of the motor 250 is max around 100 it sorta works 
-
 //********
 int green = 38;
 int red = 39;
 int blue = 40;
 int yellow = 41;
 bool button = 43;
-
-// Pointers
 volatile unsigned char* port_c= (unsigned char*) 0x28;
 volatile unsigned char* ddr_c= (unsigned char*) 0x27;
 volatile unsigned char* pin_c= (unsigned char*) 0x26;
-
 //********
 RTC_DS1307 realTimeClock;
-
 //********
 String currentState;
 bool start;
-
+//********
 
 void setup(){
   Serial.begin(9600);
@@ -52,8 +44,8 @@ void setup(){
   pinMode (29, OUTPUT);
   *ddr_c &= 0b11110000;
   *port_c |= 0b00001111;
-  realTimeClock.begin();
-  realTimeClock.adjust(DateTime(F(__DATE__),F(__TIME__)));
+  //realTimeClock.begin();
+  //realTimeClock.adjust(DateTime(F(__DATE__),F(__TIME__)));
   start = false;
   currentState = "disable";
 }
@@ -92,25 +84,8 @@ void stepper_function(){
     stepper.step(-20);
   Pval = potVal; // creates new value so that when pot is move there will be a shift
 }
-int getWaterLevel(){
-    unsigned int waterLevel = adc_Read(1);
-  float fah = dht.readTemperature(true);
-
-  if(waterLevel > 100 && fah <= 60)
-  {
-    idle();
-  }
-  else if( waterLevel > 100 && fah <= 60)
-  {
-    running();
-  }
-  else if (waterLevel <= 100)
-  {
-    error();
-  }
-  else {
-  }
-  Serial.println(analogRead(anologPin));
+float getWaterLevel(){
+  // put your main code here, to run repeatedly:
   return analogRead(anologPin); //Reads value from analog and assigns value to variable
 }
 void realTimeClockFunction(){
@@ -134,7 +109,7 @@ void running(){
     currentState = "disable";
   }
   if(getWaterLevel() < 150){
-    //int s = 1;
+    //int s = 1;//
     currentState = "error";
   }
 
@@ -180,32 +155,21 @@ void idle(){
   }
   
   if (getWaterLevel() <= 150){
-    //int s = 1;
+    //int s = 1;//
     currentState = "error";
   }
 
 }
 void changeState()
 {
-  lcd.print("The Current State is: " + currentState);
+  Serial.print("The Current State is: " + currentState);
 }
 void error(){
   turnRed();
-  lcd.clear();
-  lcd.print("ERROR");
   if(!start){
     currentState = "disable";
   }
-  if( button = true)
-  {
-    idle();
-    currentState = "Idle State";
-  }
-  else
-  {
-    error();
-  }
-  
+  //if (reset butten pushed){ currentState = "idle;";}
 }
 void selectState()
 {
