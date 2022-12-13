@@ -34,7 +34,7 @@ bool start;
 //********
 
 void setup(){
-  U0init(9600);
+  Serial.begin(9600);
   //DHT
   lcd.begin(16, 2); // sets the location on the lcd
   dht.begin();
@@ -62,7 +62,7 @@ void lcd_display(float fah, float humid){
   delay(2000);
   lcd.setCursor(0,0); // set location of chars
   lcd.print("Temp: ");
-  lcd.print(fah); // output in Farenheit
+  lcd.print(fah);
   lcd.print(" F");
   lcd.setCursor(0,1); // sets next col
   lcd.print("Humidity: ");
@@ -91,10 +91,8 @@ float getWaterLevel(){
   return analogRead(anologPin); //Reads value from analog and assigns value to variable
 }
 void realTimeClockFunction(){
-  printf(realTimeClock.now().toString("hh:mm:ss ap"));
-  // Serial.write("\n");
-  // scanf("%c", "\n");
-  fflush(); // Clear the buffer.
+  Serial.print(realTimeClock.now().toString("hh:mm:ss ap"));
+  Serial.write("\n");
 }
 void running(){
   turnBlue();
@@ -104,7 +102,7 @@ void running(){
   analogWrite(25, 225);
   lcd_display(getTemperature(), getHumidity());
   digitalWrite(27, HIGH); // gets the fan to turn on 
-  if(fah < 60 )
+  if(fah < 80 )
   {
      digitalWrite(27, LOW); // gets the fan to turn off
      currentState = "idle";
@@ -140,7 +138,6 @@ void turnYellow(){
   *port_c |= 0b00000100;
 }
 void disable(){
-  // Yellow LED will turn on and monitoring will not occur.
   turnYellow();
   delay(1000);
   if(!start){
@@ -152,11 +149,10 @@ void disable(){
   }
 }
 void idle(){
-  // Green LED will turn on and monitoring will occur unless the water level is too low (150 or lower).
   turnGreen();
   delay(1000);
   lcd_display(getTemperature(), getHumidity());
-  if(getTemperature() > 60){
+  if(getTemperature() > 80){
     currentState = "running";
   }
   
@@ -168,20 +164,27 @@ void idle(){
 }
 void changeState()
 {
-  // Outputs the current state.
-  printf("The Current State is: " + currentState); //here
-  //digital write
+  Serial.print("The Current State is: " + currentState);
 }
 void error(){
-  // When an error occurs, the state is set to "disable".
   turnRed();
+  lcd.clear();
+  lcd.print("ERROR");
+  delay(1000);
   if(!start){
     currentState = "disable";
   }
-  //if (reset butten pushed){ currentState = "idle;";}
+  if( button = true)
+  {
+    idle();
+    currentState == "Idle State";
+  }
+  else
+  {
+    error();
+  }
 }
 void selectState()
-  // state of the LED
 {
   if(currentState == "disable")
   {
