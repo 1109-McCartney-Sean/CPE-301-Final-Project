@@ -190,7 +190,11 @@ void error(){
     error();
   }
   
-  //if (reset butten pushed){ currentState = "idle;";}
+  if( button = true)
+  {
+    idle();
+    currentState = "Idle State";
+  }
 }
 void selectState()
 {
