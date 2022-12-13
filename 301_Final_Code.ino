@@ -118,6 +118,7 @@ unsigned int adc_read(unsigned char adc_channel_num)
   //– RED LED should be turned on (all other LEDs turned off)
   *port_c |= 0b00001000;
   *port_c &= ~(0b00000111);
+  
    //•ERROR
 //– Motor should be off and not start regardless of temperature
 //– A reset button should trigger a change to the IDLE stage if the water level is above the threshold
