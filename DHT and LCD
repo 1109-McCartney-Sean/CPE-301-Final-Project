@@ -1,3 +1,4 @@
+// Madison Guerrero, Nathan Habon, Sean McCartney, Eric Lee, Robert Smith
 #include <DHT.h>
 #include <LiquidCrystal.h>
 
