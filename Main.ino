@@ -89,14 +89,10 @@ float getWaterLevel(){
   return analogRead(anologPin); //Reads value from analog and assigns value to variable
 }
 void realTimeClockFunction(){
-  // Serial.print(realTimeClock.now().toString("hh:mm:ss ap"));
-  // Serial.write("\n"); <---- I don't think you can do this with scanf.
-
   printf(realTimeClock.now().toString("hh:mm:ss ap"));
+  // Serial.write("\n");
   // scanf("%c", "\n");
   fflush(); // Clear the buffer.
-
-    
 }
 void running(){
   turnBlue();
