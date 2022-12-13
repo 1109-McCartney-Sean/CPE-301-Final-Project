@@ -14,8 +14,8 @@ int potVal = 0; // value pulled from the analog / pot
 
 //********
 int waterLevel = 0; // sets place value for waterLevel
-//int anologPin = A5; // AnalogPin
-char anologPin = A5;
+int anologPin = A5; // AnalogPin
+
 //********
 int motorSpeed = 225; // sets speed of the motor 250 is max around 100 it sorta works 
 
@@ -172,6 +172,8 @@ void changeState()
 }
 void error(){
   turnRed();
+  lcd.clear();
+  lcd.print("ERROR");
   if(!start){
     currentState = "disable";
   }
