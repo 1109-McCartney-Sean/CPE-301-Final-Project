@@ -117,7 +117,8 @@ void running(){
     currentState = "disable";
   }
   if(getWaterLevel() < 150){
-    int s = 1;//currentState = "error";
+    //int s = 1;
+    currentState = "error";
   }
 
 }
@@ -162,7 +163,8 @@ void idle(){
   }
   
   if (getWaterLevel() <= 150){
-    int s = 1;//currentState = "error";
+    //int s = 1;
+    currentState = "error";
   }
 
 }
