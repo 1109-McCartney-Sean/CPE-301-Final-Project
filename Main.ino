@@ -92,7 +92,7 @@ void stepper_function(){
     stepper.step(-20);
   Pval = potVal; // creates new value so that when pot is move there will be a shift
 }
-float getWaterLevel(){
+int getWaterLevel(){
   // put your main code here, to run repeatedly:
   return analogRead(anologPin); //Reads value from analog and assigns value to variable
 }
