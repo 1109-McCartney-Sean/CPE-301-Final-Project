@@ -1,3 +1,5 @@
+// Nathan Habon, Madison Guerrero, Sean McCartney, Eric Lee, Robert Smith
+
 #include <DHT.h>
 #include <LiquidCrystal.h>
 #include <Stepper.h> 
@@ -60,7 +62,7 @@ void lcd_display(float fah, float humid){
   delay(2000);
   lcd.setCursor(0,0); // set location of chars
   lcd.print("Temp: ");
-  lcd.print(fah);
+  lcd.print(fah); // output in Farenheit
   lcd.print(" F");
   lcd.setCursor(0,1); // sets next col
   lcd.print("Humidity: ");
@@ -179,6 +181,7 @@ void error(){
   //if (reset butten pushed){ currentState = "idle;";}
 }
 void selectState()
+  // state of the LED
 {
   if(currentState == "disable")
   {
