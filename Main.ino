@@ -171,7 +171,7 @@ void idle(){
 }
 void changeState()
 {
-  Serial.print("The Current State is: " + currentState);
+  lcd.print("The Current State is: " + currentState);
 }
 void error(){
   turnRed();
