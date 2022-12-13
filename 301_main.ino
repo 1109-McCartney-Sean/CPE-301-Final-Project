@@ -1,3 +1,5 @@
+// Madison Guerrero, Nathan Habon, Sean McCartney, Eric Lee, Robert Smith
+
 arduino library 
 stepper motor
 lcd
