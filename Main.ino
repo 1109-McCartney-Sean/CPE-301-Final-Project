@@ -94,6 +94,7 @@ void stepper_function(){
 }
 int getWaterLevel(){
   // put your main code here, to run repeatedly:
+  Serial.println(analogRead(anologPin));
   return analogRead(anologPin); //Reads value from analog and assigns value to variable
 }
 void realTimeClockFunction(){
