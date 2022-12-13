@@ -93,7 +93,23 @@ void stepper_function(){
   Pval = potVal; // creates new value so that when pot is move there will be a shift
 }
 int getWaterLevel(){
-  // put your main code here, to run repeatedly:
+    unsigned int waterLevel = adc_Read(1);
+  float fah = dht.readTemperature(true);
+
+  if(waterLevel > 100 && fah <= 60)
+  {
+    idle();
+  }
+  else if( waterLevel > 100 && fah <= 60)
+  {
+    running();
+  }
+  else if (waterLevel <= 100)
+  {
+    error();
+  }
+  else {
+  }
   Serial.println(analogRead(anologPin));
   return analogRead(anologPin); //Reads value from analog and assigns value to variable
 }
