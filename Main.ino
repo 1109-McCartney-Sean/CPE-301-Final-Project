@@ -138,6 +138,7 @@ void turnYellow(){
   *port_c |= 0b00000100;
 }
 void disable(){
+  // Yellow LED will turn on and monitoring will not occur.
   turnYellow();
   delay(1000);
   if(!start){
@@ -149,6 +150,7 @@ void disable(){
   }
 }
 void idle(){
+  // Green LED will turn on and monitoring will occur unless the water level is too low (150 or lower).
   turnGreen();
   delay(1000);
   lcd_display(getTemperature(), getHumidity());
@@ -164,10 +166,12 @@ void idle(){
 }
 void changeState()
 {
+  // Outputs the current state.
   printf("The Current State is: " + currentState); //here
   //digital write
 }
 void error(){
+  // When an error occurs, the state is set to "disable".
   turnRed();
   if(!start){
     currentState = "disable";
