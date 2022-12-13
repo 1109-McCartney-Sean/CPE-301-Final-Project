@@ -32,7 +32,7 @@ bool start;
 //********
 
 void setup(){
-  Serial.begin(9600);
+  U0init(9600);
   //DHT
   lcd.begin(16, 2); // sets the location on the lcd
   dht.begin();
@@ -162,7 +162,8 @@ void idle(){
 }
 void changeState()
 {
-  Serial.print("The Current State is: " + currentState);
+  printf("The Current State is: " + currentState); //here
+  //digital write
 }
 void error(){
   turnRed();
