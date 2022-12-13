@@ -190,11 +190,6 @@ void error(){
     error();
   }
   
-  if( button = true)
-  {
-    idle();
-    currentState = "Idle State";
-  }
 }
 void selectState()
 {
