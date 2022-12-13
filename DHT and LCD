@@ -9,6 +9,7 @@ void setup(){
   lcd.begin(16, 2); // sets the location on the lcd
   dht.begin();
 }
+
 void dht_function(){
   delay(2000);
   float humid = dht.readHumidity(); // reads humid
@@ -24,6 +25,7 @@ void dht_function(){
   lcd.print("%");
   delay(1000);
 }
+
 void loop(){
  dht_function();
 }

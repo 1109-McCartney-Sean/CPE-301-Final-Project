@@ -31,11 +31,11 @@ DHT dht(DHTPIN, DHTYPE); // sets and chooses the device
 
 void setup() {
   // put your setup code here, to run once:
-Serial.begin(9600);
+  Serial.begin(9600);
   lcd.begin(16, 2); // sets the location on the lcd
   dht.begin();
-    *ddr_c &= 0b11110000;
-    *port_c |= 0b00001111;
+  *ddr_c &= 0b11110000;
+  *port_c |= 0b00001111;
 }
 
 void loop() {
@@ -86,7 +86,8 @@ unsigned int adc_read(unsigned char adc_channel_num)
   
  void disabled()
  {
-  Serial.println(“\nSystem Disabled”);
+  // Serial.println(“\nSystem Disabled”);
+  printf("\nSystem Disabled")
   // turn on Yellow LED
   lcd.clear();
   // turn off fan

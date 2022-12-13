@@ -17,30 +17,29 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-//digitalWrite(green, HIGH);
-*port_c |= 0b00000001;
-delay(1000);
-//digitalWrite(green, LOW);
-*port_c &= ~(0b00000001);
-delay(1000);
-//digitalWrite(red, HIGH);
-*port_c |= 0b00001000;
-delay(1000);
-//digitalWrite(red, LOW);
-*port_c &= ~(0b00001000);
-delay(1000);
-//digitalWrite(blue, HIGH);
-*port_c |= 0b00000010;
-delay (1000);
-//digitalWrite(blue, LOW);
-*port_c &= ~(0b00000010);
-delay(1000);
-//digitalWrite(yellow, HIGH);
-*port_c |= 0b00000100;
-delay(1000);
-//digitalWrite(yellow, LOW);
-*port_c &= ~(0b00000100);
+  //digitalWrite(green, HIGH);
+  *port_c |= 0b00000001;
+  delay(1000);
+  //digitalWrite(green, LOW);
+  *port_c &= ~(0b00000001);
+  delay(1000);
+  //digitalWrite(red, HIGH);
+  *port_c |= 0b00001000;
+  delay(1000);
+  //digitalWrite(red, LOW);
+  *port_c &= ~(0b00001000);
+  delay(1000);
+  //digitalWrite(blue, HIGH);
+  *port_c |= 0b00000010;
+  delay (1000);
+  //digitalWrite(blue, LOW);
+  *port_c &= ~(0b00000010);
+  delay(1000);
+  //digitalWrite(yellow, HIGH);
+  *port_c |= 0b00000100;
+  delay(1000);
+  //digitalWrite(yellow, LOW);
+  *port_c &= ~(0b00000100);
 }
 
 
