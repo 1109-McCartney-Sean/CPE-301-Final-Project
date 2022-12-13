@@ -45,15 +45,15 @@ void setup(){
   lcd.begin(16, 2); // sets the location on the lcd
   dht.begin();
   //STEPPER
-  //stepper.setSpeed(200); 
+  stepper.setSpeed(200); 
   //fan
   pinMode (25, OUTPUT);
   pinMode (27, OUTPUT);
   pinMode (29, OUTPUT);
   *ddr_c &= 0b11110000;
   *port_c |= 0b00001111;
-  //realTimeClock.begin();
-  //realTimeClock.adjust(DateTime(F(__DATE__),F(__TIME__)));
+  realTimeClock.begin();
+  realTimeClock.adjust(DateTime(F(__DATE__),F(__TIME__)));
   start = false;
   currentState = "disable";
 }
